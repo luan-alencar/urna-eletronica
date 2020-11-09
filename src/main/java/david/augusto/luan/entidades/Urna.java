@@ -38,9 +38,10 @@ public class Urna {
 	public boolean podeVotar() {
 		boolean status = false;
 		for (Eleitor e : this.eleitores) {
-			if (eleitores.contains(e)) {
+			if (e.isVotou() == true) {
 				status = true;
 			}
+			status = false;
 		}
 		return status;
 	}
