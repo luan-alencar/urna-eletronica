@@ -4,10 +4,12 @@ public class Eleitor {
 
 	private String nome;
 	private String titulo;
+	private boolean votou;
 
 	public Eleitor(String nome, String titulo) {
 		this.nome = nome;
 		this.titulo = titulo;
+		this.votou = false;
 	}
 
 	public Eleitor() {
@@ -28,5 +30,15 @@ public class Eleitor {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
+	public boolean isVotou() {
+		return votou;
+	}
+
+	public void setVotou(boolean votou) {
+		this.votou = votou;
+	}
+	
+	
 
 }

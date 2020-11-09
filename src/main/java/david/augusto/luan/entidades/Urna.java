@@ -3,6 +3,8 @@ package david.augusto.luan.entidades;
 import java.util.ArrayList;
 import java.util.List;
 
+import david.augusto.luan.exception.VotoIrregularException;
+
 public class Urna {
 
 //	private Candidato[] candidatos;
@@ -33,21 +35,35 @@ public class Urna {
 		return can;
 	}
 
-//	public boolean podeVotar() {
-//		for (Candidato c : candidatos) {
-//			if(c.)
-//		}
-//		
-//		return true;
-//	}
+	public boolean podeVotar() {
+		boolean status = false;
+		for (Eleitor e : this.eleitores) {
+			if (eleitores.contains(e)) {
+				status = true;
+			}
+		}
+		return status;
+	}
 
-	public void votar(int numeroCandidato) {
-		Candidato c = getCandidato(numeroCandidato);
-		c.votar();
+	public void votar(int numeroCandidato) throws VotoIrregularException {
+		for (Candidato c : candidatos) {
+			if (c.getNumero() != numeroCandidato) {
+				throw new VotoIrregularException(numeroCandidato);
+			}
+		}
+		Candidato candidato = getCandidato(numeroCandidato);
+		candidato.votar();
+
 	}
 
 	public Candidato getVencedor() {
-		return null;
+		Candidato can = null;
+		for (Candidato c : candidatos) {
+			if (c.getVotos() > c.getVotos()) {
+				can = c;
+			}
+		}
+		return can;
 	}
 
 	public void exibirApuracao() {
@@ -70,7 +86,7 @@ public class Urna {
 		this.eleitores = eleitores;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws VotoIrregularException {
 
 		// candidatos
 		Candidato c1 = new Candidato("Zezin", 1);
@@ -97,13 +113,13 @@ public class Urna {
 
 //		Candidato c = u.getCandidato(2);
 //		System.out.println(c);
-		
+
 		// votos
 		u.votar(1);
 		u.votar(1);
 		u.votar(2);
 		u.votar(3);
-		
+
 		System.out.println(c1.getNome() + " - Votos: " + c1.getVotos());
 		System.out.println(c2.getNome() + " - Votos: " + c2.getVotos());
 		System.out.println(c3.getNome() + " - Votos: " + c3.getVotos());
