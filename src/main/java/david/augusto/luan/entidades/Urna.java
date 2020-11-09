@@ -3,7 +3,6 @@ package david.augusto.luan.entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Urna {
 
 //	private Candidato[] candidatos;
@@ -34,12 +33,17 @@ public class Urna {
 		return can;
 	}
 
-	public boolean podeVotar() {
-		return true;
-	}
+//	public boolean podeVotar() {
+//		for (Candidato c : candidatos) {
+//			if(c.)
+//		}
+//		
+//		return true;
+//	}
 
-	public void votar(Eleitor tituloEleitor, Candidato numeroCandidato) {
-
+	public void votar(int numeroCandidato) {
+		Candidato c = getCandidato(numeroCandidato);
+		c.votar();
 	}
 
 	public Candidato getVencedor() {
@@ -90,9 +94,19 @@ public class Urna {
 		u.cadastrarEleitor(e1);
 		u.cadastrarEleitor(e2);
 		u.cadastrarEleitor(e3);
+
+//		Candidato c = u.getCandidato(2);
+//		System.out.println(c);
 		
-		Candidato c = u.getCandidato(2);
-		System.out.println(c);
+		// votos
+		u.votar(1);
+		u.votar(1);
+		u.votar(2);
+		u.votar(3);
+		
+		System.out.println(c1.getNome() + " - Votos: " + c1.getVotos());
+		System.out.println(c2.getNome() + " - Votos: " + c2.getVotos());
+		System.out.println(c3.getNome() + " - Votos: " + c3.getVotos());
 	}
 
 }
