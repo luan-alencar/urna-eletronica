@@ -124,6 +124,8 @@ public class Urna {
 		System.out.println(c1.getNome() + " - Votos: " + c1.getVotos());
 		System.out.println(c2.getNome() + " - Votos: " + c2.getVotos());
 		System.out.println(c3.getNome() + " - Votos: " + c3.getVotos());
+		
+		System.out.println(u.getVencedor());
 	}
 
 }
